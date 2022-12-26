@@ -5,7 +5,7 @@ namespace Maveric.Runner
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Employee Dashboard");
+            Console.WriteLine("----------Employee Dashboard----------");
             Employee.companyName = "Maveric";
             Employee.companyLocation = ("Chennai");
 
@@ -17,7 +17,7 @@ namespace Maveric.Runner
             emp1.empId = 101;
             emp1.empName = "saul";
             emp1.empSalary = 9000;
-            emp1.empPerformance = 'B';
+            emp1.empPerformanceType = 'B';
 
             Console.WriteLine(emp1.empId);
             Console.WriteLine(emp1.empName);
@@ -26,7 +26,7 @@ namespace Maveric.Runner
             emp2.empId = 102;
             emp2.empName = "Kim";
             emp2.empSalary = 12000.2;
-            emp1.empPerformance = 'A';
+            emp1.empPerformanceType = 'A';
             Console.WriteLine(emp2.empId);
             Console.WriteLine(emp2.empName);
             Console.WriteLine(emp2.empSalary);
@@ -35,7 +35,7 @@ namespace Maveric.Runner
             emp3.empId = 103;
             emp3.empName = "Jack";
             emp3.empSalary = 6000;
-            emp1.empPerformance = 'C';
+            emp1.empPerformanceType = 'C';
             Console.WriteLine(emp3.empId);
             Console.WriteLine(emp3.empName);
             Console.WriteLine(emp3.empSalary);
@@ -47,6 +47,7 @@ namespace Maveric.Runner
             emp1.GetGrossSalarywithBonus();
             emp2.GetGrossSalarywithBonus();
             emp3.GetGrossSalarywithBonus();
+            emp4.GetGrossSalarywithBonus();
         }
     }
 }
