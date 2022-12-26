@@ -11,17 +11,38 @@ namespace Maveric.Runner
     {
         public int empId;
         public string empName;
-        public double empSalary;
+        private double _empSalary;
         public static string companyName;
         public static string companyLocation;
         public char empPerformanceType;
+
+        public double EmpSalary
+        {
+            get
+            { 
+                //read
+                 return _empSalary ;
+            }
+            set
+            {
+                if(value > 3000)
+                {
+                    //write
+                    _empSalary = value;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Salary, So default value remains");
+                }
+            }
+          }
 
         public void PrintEmployeeDetail()
         {
 
             Console.WriteLine("Employee ID: " + empId);
             Console.WriteLine("Employee Name:" + empName);
-            Console.WriteLine("Employee Salary: " + empSalary);
+            Console.WriteLine("Employee Salary: " + _empSalary);
             Console.WriteLine("Employee Performance: " + empPerformanceType);
             Console.WriteLine("Company Name: " + Employee.companyName);
             Console.WriteLine("Company Location: " + Employee.companyLocation);
@@ -29,28 +50,31 @@ namespace Maveric.Runner
         }
         //CalculateBonus
 
-        public void GetGrossSalarywithBonus()
+        public void DisplayGetGrossSalarywithBonus()
         {
             Console.WriteLine("Employee Id: " + empId);
             if (empPerformanceType == 'A')
             {
                 Console.WriteLine("25%");
-                Console.WriteLine(empSalary + (empSalary * 25 / 100));
+                //return(_empSalary + (_empSalary * 25 / 100));
             }
             else if (empPerformanceType == 'B')
             {
                 Console.WriteLine("15%");
-                Console.WriteLine(empSalary + (empSalary * 15 / 100));
+                Console.WriteLine(_empSalary + (_empSalary * 15 / 100));
+               // return _empSalary + (_empSalary * 25 / 100);
             }
             else if (empPerformanceType == 'C')
             {
                 Console.WriteLine("10%");
-                Console.WriteLine(empSalary + (empSalary * 10 / 100));
+                Console.WriteLine(_empSalary + (_empSalary * 10 / 100));
+               // return _empSalary +(_empSalary * 25 / 100);
             }
             else
             {
                 Console.WriteLine("Not Eligible for Bonus!!!");
             }
+           // return 0;
             Console.WriteLine("----------------------------------------");
         }
     }
