@@ -45,7 +45,6 @@ namespace Maveric.Runner
             emp3.DisplayGetGrossSalarywithBonus();
             emp4.DisplayGetGrossSalarywithBonus();
 
-
             //
             Console.WriteLine(emp3.EmpSalary);
         }
