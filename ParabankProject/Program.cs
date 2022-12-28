@@ -22,6 +22,7 @@ namespace ParabankProject
             driver.FindElement(By.Id("customer.password")).SendKeys("SnehaS@124");
             driver.FindElement(By.Id("repeatedPassword")).SendKeys("SnehaS@124");
             driver.FindElement(By.XPath("//input[@value='Register']")).Click();
+
         }
     }
 }
