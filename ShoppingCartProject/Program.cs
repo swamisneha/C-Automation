@@ -8,35 +8,35 @@ namespace Maveric.Runners
         {
             Console.WriteLine("-------------- Shopping Cart -------------");
 
-            Shopping Cart1 = new Shopping();
-            Shopping Cart2 = new Shopping();
-            Shopping Cart3 = new Shopping();
-            Shopping Cart4 = new Shopping();
-            Shopping Cart5 = new Shopping();
+            Shopping Cart1 = new Shopping(4);
+            Shopping Cart2 = new Shopping(5);
+            Shopping Cart3 = new Shopping(7);
+            Shopping Cart4 = new Shopping(4);
+            Shopping Cart5 = new Shopping(2);
 
             Cart1.Id = 101;
             Cart1.descr = "HP";
-            Cart1.quantity = 5;
+            Cart1.Quantity = 5;
             Cart1.price = 45000;
 
             Cart2.Id = 102;
             Cart2.descr = "Lenovo";
-            Cart2.quantity = 8;
+            Cart2.Quantity = 8;
             Cart2.price = 70000;
 
             Cart3.Id = 103;
             Cart3.descr = "Apple";
-            Cart3.quantity = 9;
+            Cart3.Quantity = 9;
             Cart3.price = 49000;
 
             Cart4.Id = 104;
             Cart4.descr = "Dell";
-            Cart4.quantity = 15;
+            Cart4.Quantity = 15;
             Cart4.price = 50000;
 
             Cart5.Id = 105;
             Cart5.descr = "Acer";
-            Cart5.quantity = 7;
+            Cart5.Quantity = 7;
             Cart5.price = 90000;
 
             Cart1.PrintShoppintCartDetails();

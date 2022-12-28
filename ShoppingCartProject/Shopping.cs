@@ -10,38 +10,68 @@ namespace Maveric.Runners
     {
         public int Id;
         public string descr;
-        public int quantity;
+        private int _quantity;
         public double price;
+
+        //public Shopping() 
+        //{
+        //   _quantity = 1;
+        //  Console.WriteLine("Object Created");
+        //}
+        
+        public  Shopping(int _quantity)
+        {
+            this._quantity= _quantity;
+        }
+
+        public int Quantity
+        {
+            set
+            {
+                if (value > 0)
+                {
+                    _quantity = value;
+                }
+                else
+                {
+                    Console.WriteLine("Quantity cannot be nigative");
+                }
+            }
+        }
 
         public void PrintShoppintCartDetails()
         {
-            Console.WriteLine("Shop Id: " +Id );
-            Console.WriteLine("Description: "+descr);
-            Console.WriteLine("Quantity: "+quantity);
-            Console.WriteLine("Price: "+price);
+            Console.WriteLine("Shop Id: " + Id);
+            Console.WriteLine("Description: " + descr);
+            Console.WriteLine("Quantity: " + _quantity);
+            Console.WriteLine("Price: " + price);
             Console.WriteLine("-------------------------------");
         }
 
         public void PrintDiscountPrice()
         {
             Console.WriteLine("Shop Id: " + Id);
-            if (quantity==2)
+            if (_quantity == 2)
             {
-                double d =(price - (price * 10 / 100)) * quantity;
-                Console.WriteLine("Final Price: "+d);
-                Console.WriteLine();
-            }
-            else if (quantity >=3 && quantity <=5)
-            {
-                double d = (price - (price * 15 / 100)) * quantity;
-                Console.WriteLine("Final Price: " + d);
-                Console.WriteLine();    
-            }
-            else if(quantity > 5)
-            {
-                double d = (price - (price * 25 / 100)) * quantity;
+                double d = (price - (price * 10 / 100)) * _quantity;
                 Console.WriteLine("Final Price: " + d);
                 Console.WriteLine();
+            }
+            else if (_quantity >= 3 && _quantity <= 5)
+            {
+                double d = (price - (price * 15 / 100)) * _quantity;
+                Console.WriteLine("Final Price: " + d);
+                Console.WriteLine();
+            }
+            else if (_quantity > 5)
+            {
+                double d = (price - (price * 25 / 100)) * _quantity;
+                Console.WriteLine("Final Price: " + d);
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("No Discount...!!!");
             }
         }
     }
