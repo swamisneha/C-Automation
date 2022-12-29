@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 
 namespace Maveric.DemoGuru
 {
@@ -8,6 +9,8 @@ namespace Maveric.DemoGuru
         static void Main(string[] args)
         {
             IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             driver.Url = "https://demo.guru99.com/test/newtours/register.php";
 
             driver.FindElement(By.Name("firstName")).SendKeys("john");
@@ -18,7 +21,9 @@ namespace Maveric.DemoGuru
             driver.FindElement(By.Name("city")).SendKeys("Pune");
             driver.FindElement(By.Name("state")).SendKeys("Maharashtra");
             driver.FindElement(By.Name("postalCode")).SendKeys("411014");
-            driver.FindElement(By.Name("country")).SendKeys("ALBANIA");
+
+            SelectElement selectCountry = new SelectElement( driver.FindElement(By.Name("country")));
+            selectCountry.SelectByText("India");
             driver.FindElement(By.Name("email")).SendKeys("john12@gmail.com");
             driver.FindElement(By.Name("password")).SendKeys("john123");
             driver.FindElement(By.Name("confirmPassword")).SendKeys("john123");
