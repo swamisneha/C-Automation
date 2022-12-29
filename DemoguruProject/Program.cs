@@ -22,7 +22,7 @@ namespace Maveric.DemoGuru
             driver.FindElement(By.Name("state")).SendKeys("Maharashtra");
             driver.FindElement(By.Name("postalCode")).SendKeys("411014");
 
-            SelectElement selectCountry = new SelectElement( driver.FindElement(By.Name("country")));
+            SelectElement selectCountry = new SelectElement(driver.FindElement(By.Name("country")));
             selectCountry.SelectByText("India");
             driver.FindElement(By.Name("email")).SendKeys("john12@gmail.com");
             driver.FindElement(By.Name("password")).SendKeys("john123");
