@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -74,11 +75,18 @@ namespace Maveric.SeleniumAdvanceP
             driver.FindElement(By.Id("citiCard2")).SendKeys("5656");
             driver.FindElement(By.Id("citiCard2")).SendKeys("8887");
             driver.FindElement(By.Id("citiCard2")).SendKeys("9998");
-
-
-
-
+            driver.FindElement(By.Id("cvvnumber")).SendKeys("123");
+            driver.FindElement(By.Id("bill-date-long")).Click();
+            SelectElement month = new SelectElement(driver.FindElement(By.XPath("//select[@class='ui-datepicker-month']")));
+            month.SelectByText("Apr");
+            SelectElement year = new SelectElement(driver.FindElement(By.XPath("//select[@class='ui-datepicker-year']")));
+            year.SelectByText("2022");
+            driver.FindElement(By.LinkText("14")).Click();
+            driver.FindElement(By.XPath("//input[@class='ctaBlue minWidth']")).Click();
+            //Thread.Sleep(1000);
+            string textPrint = driver.FindElement(By.XPath("//li[contains(text(),'• Please accept Terms and Conditions ')]")).Text;
+            Console.WriteLine(textPrint);
         }
     }
-    
+
 }
