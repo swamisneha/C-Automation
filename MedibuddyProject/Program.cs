@@ -22,7 +22,7 @@ namespace Medibuddy.Project
             driver.FindElement(By.XPath("//span[contains(text(),'Show password')]")).Click();
             driver.FindElement(By.XPath("//button[contains(text(),'Log in')]")).Click();
 
-         
+
 
         }
     }
