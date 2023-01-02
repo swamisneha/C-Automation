@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -64,8 +65,11 @@ namespace Maveric.SeleniumAdvanceP
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             driver.Url = "https://www.online.citibank.co.in/";
-            driver.FindElement(By.XPath("//a[@class='fancybox-item fancybox-close']")).Click();
+            //driver.FindElement(By.XPath("//a[@class='fancybox-item fancybox-close']")).Click();
+            driver.FindElement(By.XPath("//a[@title='Close']")).Click();
             driver.FindElement(By.XPath("//span[contains(text(),'Login')] ")).Click();
+
+            //Console.WriteLine(driver.Url);
             driver.SwitchTo().Window(driver.WindowHandles[1]);
 
             driver.FindElement(By.XPath("//div[contains(text(),' Forgot User ID? ')]")).Click();
@@ -73,19 +77,34 @@ namespace Maveric.SeleniumAdvanceP
             driver.FindElement(By.LinkText("Credit Card")).Click();
             driver.FindElement(By.Id("citiCard1")).SendKeys("4545");
             driver.FindElement(By.Id("citiCard2")).SendKeys("5656");
-            driver.FindElement(By.Id("citiCard2")).SendKeys("8887");
-            driver.FindElement(By.Id("citiCard2")).SendKeys("9998");
-            driver.FindElement(By.Id("cvvnumber")).SendKeys("123");
-            driver.FindElement(By.Id("bill-date-long")).Click();
-            SelectElement month = new SelectElement(driver.FindElement(By.XPath("//select[@class='ui-datepicker-month']")));
-            month.SelectByText("Apr");
-            SelectElement year = new SelectElement(driver.FindElement(By.XPath("//select[@class='ui-datepicker-year']")));
-            year.SelectByText("2022");
-            driver.FindElement(By.LinkText("14")).Click();
-            driver.FindElement(By.XPath("//input[@class='ctaBlue minWidth']")).Click();
+            driver.FindElement(By.Id("citiCard3")).SendKeys("8887");
+            driver.FindElement(By.Id("citiCard4")).SendKeys("9998");
+
+            driver.FindElement(By.Id("cvvnumber")).SendKeys("787");
+            driver.ExecuteJavaScript("document.querySelecor('#bill-date-long').value ='14/04/2022'");
+            //driver.FindElement(By.Id("bill-date-long")).Click();
+            //SelectElement month = new SelectElement(driver.FindElement(By.XPath("//select[@class='ui-datepicker-month']")));
+            //month.SelectByText("Apr");
+            //SelectElement year = new SelectElement(driver.FindElement(By.XPath("//select[@class='ui-datepicker-year']")));
+            //year.SelectByText("2022");
+            //driver.FindElement(By.LinkText("14")).Click();
+            driver.FindElement(By.XPath("[value='PROCEED'")).Click();
             //Thread.Sleep(1000);
             string textPrint = driver.FindElement(By.XPath("//li[contains(text(),'• Please accept Terms and Conditions ')]")).Text;
             Console.WriteLine(textPrint);
+        }
+
+        [Test]
+        public void Demo4Openemr()
+        {
+            IWebDriver driver = new ChromeDriver();
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            driver.Url = "http://demo.openemr.io/b/openemr/interface/login/login.php?site=default";
+            driver.SwitchTo().Window(driver.WindowHandles[1]);
+
+            //driver.FindElement(By.Id("authUser")).SendKeys("john");
+            //driver.FindElement(By.Id("clearPass")).SendKeys("john123);
         }
     }
 
