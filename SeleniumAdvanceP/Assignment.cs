@@ -61,12 +61,9 @@ namespace SeleniumAdvanceP
             Console.WriteLine(errormessage);
         }
         [Test]
-        public static void Demo()
+        public static void Openemr()
         {
             IWebDriver driver = new ChromeDriver();
-
-
-
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             driver.Url = " http://demo.openemr.io/b/openemr/";
@@ -100,15 +97,6 @@ namespace SeleniumAdvanceP
             driver.SwitchTo().DefaultContent();
             string patientname = driver.FindElement(By.XPath("//span[@data-bind='text: pname()']")).Text;
             Console.WriteLine(patientname);
-
-
-
-
-            // driver.FindElement(By.Id("authUser")).SendKeys("admin");
-            //  driver.FindElement(By.Id("authUser")).SendKeys("admin");
-
-
-
         }
 
 
@@ -119,24 +107,29 @@ namespace SeleniumAdvanceP
             IWebDriver driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            driver.Url = "https://www.royalcaribbean.com/";
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.Url = "https://www.royalcaribbean.com/account/create";
 
-            driver.FindElement(By.XPath("//div[@class='notification-banner__close']")).Click();
-            driver.FindElement(By.Id("rciHeaderSignIn")).Click();
+           // driver.FindElement(By.XPath("//div[@class='notification-banner__close']")).Click();
+            //driver.FindElement(By.Id("rciHeaderSignIn")).Click();
 
-            IWebElement ele = driver.FindElement(By.LinkText("Create an account"));
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
-            executor.ExecuteScript("arguments[0].click();", ele);
-            driver.FindElement(By.Id("mat-input-11")).SendKeys("Denis");
-            driver.FindElement(By.Id("mat-input-12")).SendKeys("Rich");
+           // IWebElement ele = driver.FindElement(By.PartialLinkText("Create an account"));
+            //IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
+            //executor.ExecuteScript("arguments[0].click();", ele);
 
+            driver.FindElement(By.XPath("//input[@data-placeholder='First name/Given name']")).SendKeys("Denis");
+            driver.FindElement(By.XPath("//input[@data-placeholder='Last name/Surname']")).SendKeys("Rich");
 
-            //driver.FindElement(By.XPath("//label[@class='footer__legal-name__label']")).Click();
-
-            //driver.FindElement(By.XPath("//a[text()='Create an account']")).Click();
-
+            driver.FindElement(By.XPath("//span[text()='Month']")).Click();
+            driver.FindElement(By.XPath("//span[contains(text(),'April')]")).Click();
+            driver.FindElement(By.XPath("//span[contains(text(),'Day')]")).Click();
+            driver.FindElement(By.XPath("//span[contains(text(),' 4 ')]")).Click();
+            driver.FindElement(By.XPath("//input[@data-placeholder='Year']")).SendKeys("1990");
+            driver.FindElement(By.XPath("//span[contains(text(),'Country/Region of residence')]")).Click();
+            driver.FindElement(By.XPath("//span[contains(text(),'India')]")).Click();
+           
         }
+
         [Test]
         public void PhpTravel()
         {
@@ -147,13 +140,23 @@ namespace SeleniumAdvanceP
 
             driver.FindElement(By.XPath("(//i[@class='la la-angle-down'])[3]")).Click();
             driver.FindElement(By.LinkText("English")).Click();
-            driver.FindElement(By.XPath("//a[@class='active_flights waves-effect']")).Click();
-            driver.FindElement(By.XPath("//input[@id='autocomplete']")).SendKeys("Los Angeles (LAX)");
-            driver.FindElement(By.XPath("//input[@id='autocomplete2']")).SendKeys("Dallas (DAL)");
-            driver.ExecuteJavaScript(("document.querySelector('#departure').value='2022-05-30';"));
-            driver.FindElement(By.XPath("//a[@class='dropdown-toggle dropdown-btn travellers waves-effect']")).Click();
-            driver.FindElement(By.ClassName(" dropdown-item adult_qty")).Click();
-            driver.FindElement(By.ClassName("(//div[@class='qtyInc'])[1]")).Click();
+            driver.FindElement(By.XPath("//span[text()='flights']")).Click();
+            //driver.FindElement(By.XPath("//a[@class='active_flights waves-effect']")).Click();
+            driver.FindElement(By.Id("autocomplete")).SendKeys("Los Angeles");
+            driver.FindElement(By.Id("autocomplete2")).SendKeys("Dellas");
+         
+            driver.FindElement(By.Id("departure")).Clear();
+            driver.FindElement(By.Id("departure")).SendKeys("2022-05-30");
+            //driver.FindElement(By.XPath("//a[@class='dropdown-toggle dropdown-btn travellers waves-effect']")).Click();
+            Thread.Sleep(30000);
+            driver.FindElement(By.XPath("//a[@data-toggle='dropdown']")).Click();
+            driver.FindElement(By.XPath("//i[@class='la la-plus']")).Click();
+            driver.FindElement(By.Id("flights-search")).Click();
+            Thread.Sleep(30000);
+           string printdetails = driver.FindElement(By.XPath("//div[@class='theme-search-results-item-preview']")).Text;
+           Console.WriteLine(printdetails);
+
+
 
         }
 
